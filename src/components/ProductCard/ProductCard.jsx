@@ -1,10 +1,14 @@
+import { useState } from "react";
 import "./productCard.css";
 
 const ProductCard = ({title, price, imageId, addToCart}) => {
 
   const handleAddToCartClick = () => {
     addToCart(price);
+    setCounterItem(counterItem + 1);
   }
+
+  const [counterItem, setCounterItem] = useState(0);
 
   return (
     <>
@@ -17,6 +21,7 @@ const ProductCard = ({title, price, imageId, addToCart}) => {
             {price}€
           </p>
           <button className="btn btn-primary" onClick={handleAddToCartClick}>+</button>
+          <span className="ms-1"><b>{counterItem}</b> {counterItem >= 1 ? "produits" : "produit"}</span>
         </div>
       </div>
     </>
