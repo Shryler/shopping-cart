@@ -10,10 +10,11 @@ const Register = () => {
     const [mailCheck, setMailCheck] = useState(false);
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState(false);
+    const [confPasswordCheck, setConfPasswordCheck] = useState(false);
 
     const regexMail = new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
     const regexPassword = new RegExp(/^((?=\S?[A-Z])(?=\S?[a-z])(?=\S*?[0-9]).{5,})\S$/);
-
+    
     const changeLogin = (e) => {
         const loginValue = e.target.value;
         if (loginValue.length > 3){
@@ -35,6 +36,15 @@ const Register = () => {
         }
     }
 
+    const confirmPassword = (e) => {
+        const confPasswordValue = e.target.value;
+        if (password === confPasswordValue){
+            setConfPasswordCheck(true);
+        } else {
+            setConfPasswordCheck(false);
+        }
+    }
+
     const changeMail = (e) => {
         const mailValue = e.target.value;
         const mailCheck = regexMail.test(mailValue);
@@ -47,7 +57,7 @@ const Register = () => {
     }
     const handleClickRegister = (e) => {
         e.preventDefault();
-        if (loginCheck && passwordCheck && mailCheck){
+        if (loginCheck && passwordCheck && confPasswordCheck && mailCheck){
             alert("Vous êtes enregistré !")
             console.log("Login :" + login);
             console.log("Mail :" + mail);
@@ -73,6 +83,11 @@ const Register = () => {
                 <label htmlFor="" className="mt-2 text-center">Saisir un mot de passe</label>
                 <input type="password" name="password" placeholder="Password" className={passwordCheck ? "form-success" : "form-wrong"} onChange={changePassword} />
                 <span className="text-danger text-center">{passwordCheck ? "" : "Mot de passe incorrecte"}</span>
+            </div>
+            <div className="d-flex flex-column">
+                <label htmlFor="" className="mt-2 text-center">Confirmation du mot de passe</label>
+                <input type="password" name="confpassword" placeholder="Confirmation du password" className={confPasswordCheck ? "form-success" : "form-wrong"} onChange={confirmPassword} />
+                <span className="text-danger text-center">{confPasswordCheck ? "" : "Confirmation du mot de passe incorrecte"}</span>
             </div>
             <button type="submit" onClick={handleClickRegister}>S'enregister</button>
         </div>
