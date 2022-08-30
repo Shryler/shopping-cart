@@ -12,9 +12,6 @@
     margin: 0.8rem;
 }
 
-.form-wrong {
-    border-color: red;
-}
 p {
     margin: 0;
 }
@@ -28,4 +25,7 @@ button[type=submit] {
 }
 .form-success {
     border-color: rgb(0, 225, 0);
+}
+.form-wrong {
+    border-color: red;
 }
