@@ -1,9 +1,10 @@
 import "./productCard.css";
 
-const ProductCard = ({title, price, imageId}) => {
+const ProductCard = ({title, price, imageId, addToCart}) => {
 
-
-
+  const handleAddToCartClick = () => {
+    addToCart(price);
+  }
 
   return (
     <>
@@ -15,7 +16,7 @@ const ProductCard = ({title, price, imageId}) => {
           <p className="card-text">
             {price}€
           </p>
-          <button className="btn btn-primary">+</button>
+          <button className="btn btn-primary" onClick={handleAddToCartClick}>+</button>
         </div>
       </div>
     </>

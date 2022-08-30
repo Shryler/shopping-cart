@@ -7,8 +7,19 @@ import ProductCard from './components/ProductCard/ProductCard';
 
 function App() {
 
-  const [itemsCount, setItemsCount] = useState();
-  const [price, setPrice] = useState()
+  const [itemsCount, setItemsCount] = useState(0);
+  const [price, setPrice] = useState(0);
+// OU
+  // const cartObj = {itemsCount:0, price:0};
+  // const [cart, setCart] = useState(cartObj);
+// OU
+  // const [cart, setCart] = useState({itemsCount, price});
+
+  const addToCart = (priceToAdd) => {
+    setItemsCount(itemsCount + 1);
+    const newPrice = +price + +priceToAdd;
+    setPrice(newPrice);
+  }
 
   const productsInit = [
     { id: "1", title: "produit 1", price: "99.90", imageId: "1001" },
@@ -19,7 +30,7 @@ function App() {
 
   const productElements = productsInit.map(product =>
     <div className='col-12 col-lg-3 ' key={product.id}>
-      <ProductCard title={product.title} price={product.price} imageId={product.imageId} />
+      <ProductCard title={product.title} price={product.price} imageId={product.imageId} addToCart={addToCart}/>
     </div>
   );
 

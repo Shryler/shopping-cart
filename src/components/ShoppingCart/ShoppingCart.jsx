@@ -20,7 +20,7 @@ const ShoppingCart = ({ itemsCount, price }) => {
       {/* OU */}
       {/* {shoppingCartIcon} */}
       <span className="badge text-bg-info ms-1">{itemsCount}</span>
-      <span className="price-indicator ms-1">{price}€</span>
+      <span className="price-indicator ms-1">{price.toFixed(2)}€</span>
     </div>
   );
 };
