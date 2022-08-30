@@ -18,7 +18,7 @@ const ProductCard = ({ title, price, imageId, addToCart, delToCart }) => {
 
   return (
     <>
-      <div className="card">
+      <div className="card bg-dark text-light">
         <img src={"https://picsum.photos/id/" + imageId + "/600/400"}
           className="card-img-top" alt={title} />
         <div className="card-body">

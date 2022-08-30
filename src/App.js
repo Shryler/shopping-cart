@@ -6,6 +6,7 @@ import Counter from './components/Counter';
 import NavBar from './components/NavBar/NavBar';
 import OnChange from './components/OnChange';
 import ProductCard from './components/ProductCard/ProductCard';
+import Register from './components/Register/Register';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
         </div>
         <Counter />
         <OnChange />
+        <Register />
       </div>
     </div>
   );
