@@ -1,16 +1,14 @@
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./navBar.css";
 
-const NavBar = () => {
-
-
+const NavBar = ({itemsCount, price}) => {
 
   return (
     <>
       <nav className="navbar bg-light">
         <div className="container-fluid">
           <span className="navbar-brand">Navbar</span>
-          <ShoppingCart/>
+          <ShoppingCart itemsCount={itemsCount} price={price}/>
         </div>
       </nav>
     </>
