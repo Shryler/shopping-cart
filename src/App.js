@@ -2,7 +2,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { useState } from 'react';
 import './App.css';
+import Counter from './components/Counter';
 import NavBar from './components/NavBar/NavBar';
+import OnChange from './components/OnChange';
 import ProductCard from './components/ProductCard/ProductCard';
 
 function App() {
@@ -20,6 +22,13 @@ function App() {
     const newPrice = +price + +priceToAdd;
     setPrice(newPrice);
   }
+  const delToCart = (priceToDel) => {
+    if (price > 0){
+      setItemsCount(itemsCount - 1);
+      const newPrice = +price - +priceToDel;
+      setPrice(newPrice);
+    }
+  }
 
   const productsInit = [
     { id: "1", title: "produit 1", price: "99.90", imageId: "1001" },
@@ -30,17 +39,19 @@ function App() {
 
   const productElements = productsInit.map(product =>
     <div className='col-12 col-lg-3 ' key={product.id}>
-      <ProductCard title={product.title} price={product.price} imageId={product.imageId} addToCart={addToCart}/>
+      <ProductCard title={product.title} price={product.price} imageId={product.imageId} addToCart={addToCart} delToCart={delToCart}/>
     </div>
   );
 
   return (
     <div className="App container-fluid">
-      <NavBar itemsCount={itemsCount} price={price} />
+      <NavBar itemsCount={itemsCount} price={price}/>
       <div className='product-container container'>
         <div className='row'>
           {productElements}
         </div>
+        <Counter />
+        <OnChange />
       </div>
     </div>
   );

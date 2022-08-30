@@ -1,14 +1,20 @@
 import { useState } from "react";
 import "./productCard.css";
 
-const ProductCard = ({ title, price, imageId, addToCart }) => {
+const ProductCard = ({ title, price, imageId, addToCart, delToCart }) => {
+
+  const [counterItem, setCounterItem] = useState(0); 
 
   const handleAddToCartClick = () => {
     addToCart(price);
     setCounterItem(counterItem + 1);
   }
-
-  const [counterItem, setCounterItem] = useState(0);
+  const handleDelToCartClick = () => {
+    if (counterItem > 0){
+      delToCart(price);
+      setCounterItem(counterItem - 1);
+    }
+  }
 
   return (
     <>
@@ -21,7 +27,10 @@ const ProductCard = ({ title, price, imageId, addToCart }) => {
             {price}€
           </p>
           <div className="d-flex align-items-center justify-content-between">
-            <button className="btn btn-primary" onClick={handleAddToCartClick}>+</button>
+            <div>
+              <button className="btn btn-primary me-2" onClick={handleAddToCartClick}>+</button>
+              <button className="btn btn-danger" onClick={handleDelToCartClick}>-</button>
+            </div>
             <span><b>{counterItem}</b> {counterItem >= 1 ? "produits" : "produit"}</span>
           </div>
         </div>

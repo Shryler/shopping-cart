@@ -8,7 +8,7 @@ const NavBar = ({itemsCount, price}) => {
       <nav className="navbar bg-light">
         <div className="container-fluid">
           <span className="navbar-brand">Navbar</span>
-          <ShoppingCart itemsCount={itemsCount} price={price}/>
+          <ShoppingCart itemsCount={itemsCount} price={Math.abs(price)}/>
         </div>
       </nav>
     </>
