@@ -17,7 +17,7 @@ const Register = () => {
     
     const changeLogin = (e) => {
         const loginValue = e.target.value;
-        if (loginValue.length > 3){
+        if (loginValue.trim().length > 2){
             setLoginCheck(true);
             setLogin(loginValue);
         } else {
